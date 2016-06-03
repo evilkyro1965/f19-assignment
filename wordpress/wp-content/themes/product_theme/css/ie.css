@@ -1,6 +1,0 @@
-/* CSS hack code for IE */
-  .third .close,		
-  .dialog .close,
-  .dialog-add .close {
-	  filter: alpha(opacity=100);
-  }
