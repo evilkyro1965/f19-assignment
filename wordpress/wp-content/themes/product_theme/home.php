@@ -4,35 +4,35 @@
  */
 get_header(); 
 
-global $current_user;
-get_currentuserinfo();
+$filters = $_GET['filters'] != '' ? explode(",", $_GET['filters']) : null;
 
 if(have_posts()) :
 	the_post();
 	$postId = $post->ID;
 ?>
 
+<script>var currUrl = "<?php echo get_site_url(); ?>";</script>
 
-	<nav class="navbar navbar-inverse navbar-fixed-top">
-		<div class="container">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="#">Project name</a>
-			</div>
-			<div id="navbar" class="collapse navbar-collapse">
-				<ul class="nav navbar-nav">
-					<li class="active"><a href="#">Home</a></li>
-					<li><a href="#about">About</a></li>
-					<li><a href="#contact">Contact</a></li>
-				</ul>
-			</div><!--/.nav-collapse -->
-		</div>
-	</nav>
+	<header>
+		<a href="#" class="headerLogo">
+			<img src="<?php bloginfo("stylesheet_directory");?>/i/small_placeholder.png" alt="Image"/>
+		</a>
+		
+		<ul class="menuSmall">
+			<li><a href="#" class="">Menu 1</a></li>
+			<li> | <a href="#" class="">Menu 2</a></li>
+			<li> | <a href="#" class="">Menu 2</a></li>
+			<li> | <a href="#" class="">Menu 2</a></li>
+		</ul>
+		
+		<ul class="menuBig">
+			<li><a href="#" class="">Menu 1</a></li>
+			<li> | <a href="#" class="">Menu 2</a></li>
+			<li> | <a href="#" class="">Menu 2</a></li>
+			<li> | <a href="#" class="">Menu 2</a></li>
+		</ul>
+		
+	</header>
 
 	<div class="container">
 
@@ -53,7 +53,6 @@ if(have_posts()) :
 						
 						if($categories != null) {
 							foreach($categories as $category) {
-								echo $category->name."</br>";
 								
 								$innerCategories = get_categories( 
 									array( 
@@ -64,9 +63,16 @@ if(have_posts()) :
 								);
 								
 								if($innerCategories != null) {
+									echo '<h5 class="filterTitle">'.$category->name.'</h5>';
+									echo '<ul class="filterList">';
 									foreach($innerCategories as $innerCat) {
-										echo $innerCat->name."</br>";
+										$checked = "";
+										if($filters!=null && in_array($innerCat->term_id, $filters)) {
+											$checked = "CHECKED";
+										}
+										echo '<li><label><input type="checkbox" class="filterCheck" value="'.$innerCat->term_id.'" '.$checked.' />'.$innerCat->name.'</label></li>';
 									}
+									echo '</ul>';
 								}
 							}
 						}
@@ -76,12 +82,18 @@ if(have_posts()) :
 				
 				<div class="col-md-9 productGrid">
 					
+					<a id="removeFilters" class="btn btn-default btn-default" href="javascript:removeFilters();" role="button">Remove All Filter</a>
+					
 					<!-- Product Row -->
 					<div class="row gridRow">
 						
 					<?php
 						
 						$productQueryArg = array('post_type' => PRODUCT_POST);
+						if($filters!=null) {
+							$filterString = $_GET['filters'];
+							$productQueryArg['cat'] = $filterString;
+						}
 						$query = new WP_Query( $productQueryArg );
 						
 						if ( $query->have_posts() ) :
@@ -93,6 +105,9 @@ if(have_posts()) :
 								$title = substr( get_the_title(), 0, 40 );
 								$excerpt = substr( get_the_excerpt(), 0, 30 );
 								$price = number_format($price, 2, '.', ',');
+								
+								$categories = get_the_category($productId);
+								//print_r($categories);
 					?>
 						<!-- Product Item -->
 						<div class="col-md-4 productItem">
@@ -103,11 +118,20 @@ if(have_posts()) :
 							</div>
 							<a href="#" class="productTitle"><?php echo $title;?></a>
 							<h5 class="productExcerpt"><?php echo $excerpt;?> $<?php echo $price;?></h5>
+							<?php 
+								if($categories != null) :
+							?>
 							<ul class="productList">
-								<li>USP 1</li>
-								<li>USP 2</li>
-								<li>USP 3</li>
+								<?php 
+									foreach($categories as $index=>$category) : 
+										if($index>=2) break;
+								?>
+								<li><?php echo $category->name;?></li>
+								<?php endforeach; ?>
 							</ul>
+							<?php
+								endif;
+							?>
 							<div>
 								<a class="btn btn-default btn-default detailsLink" href="#" role="button">More Information</a>
 							</div>
@@ -117,65 +141,6 @@ if(have_posts()) :
 							endwhile;
 						endif;
 					?>					
-						<!-- Product Item -->
-						<div class="col-md-4 productItem">
-							<div>
-									<a href="javascript:;" class="productThumb">
-										<img src="<?php bloginfo("stylesheet_directory");?>/i/small_placeholder.png" alt="Image"/>
-									</a>
-							</div>
-							<a href="#" class="productTitle">Title Display</a>
-							<h5 class="productExcerpt">CTOUCH Laser Vanaf $2.999,-</h5>
-							<ul class="productList">
-								<li>USP 1</li>
-								<li>USP 2</li>
-								<li>USP 3</li>
-							</ul>
-							<div>
-								<a class="btn btn-default btn-default detailsLink" href="#" role="button">More Information</a>
-							</div>
-						</div>
-						<!-- Product Item End -->
-						
-						<!-- Product Item -->
-						<div class="col-md-4 productItem">
-							<div>
-									<a href="javascript:;" class="productThumb">
-										<img src="<?php bloginfo("stylesheet_directory");?>/i/small_placeholder.png" alt="Image"/>
-									</a>
-							</div>
-							<a href="#" class="productTitle">Title Display</a>
-							<h5 class="productExcerpt">CTOUCH Laser Vanaf $2.999,-</h5>
-							<ul class="productList">
-								<li>USP 1</li>
-								<li>USP 2</li>
-								<li>USP 3</li>
-							</ul>
-							<div>
-								<a class="btn btn-default btn-default detailsLink" href="#" role="button">More Information</a>
-							</div>
-						</div>
-						<!-- Product Item End -->
-						
-						<!-- Product Item -->
-						<div class="col-md-4 productItem">
-							<div>
-									<a href="javascript:;" class="productThumb">
-										<img src="<?php bloginfo("stylesheet_directory");?>/i/small_placeholder.png" alt="Image"/>
-									</a>
-							</div>
-							<a href="#" class="productTitle">Title Display</a>
-							<h5 class="productExcerpt">CTOUCH Laser Vanaf $2.999,-</h5>
-							<ul class="productList">
-								<li>USP 1</li>
-								<li>USP 2</li>
-								<li>USP 3</li>
-							</ul>
-							<div>
-								<a class="btn btn-default btn-default detailsLink" href="#" role="button">More Information</a>
-							</div>
-						</div>
-						<!-- Product Item End -->
 						
 					</div>
 					<!-- Product Row -->
