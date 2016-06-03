@@ -28,6 +28,9 @@ body {
 	font-weight:600;
 }
 
+.navbar {
+	margin-bottom:0px;
+}
 	.selectStation {
 		float:right;
 		min-width:215px;
@@ -66,3 +69,28 @@ body {
 		color:#529f11;
 		margin:0px;
 	}
+	
+.mainContent {
+	clear:both;
+	min-height:875px;
+	background:url(../i/main-bg.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+	
+	padding:30px 50px;
+}	
+
+	.priceWrapper {
+		background-color:#ffffff;
+		padding:10px;
+	}
+		.priceMainTitle {
+			font-size: 18px;
+			font-weight: 600;
+		}
+		.priceMain {
+			background-color:#012971;
+			margin:0px;
+		}
