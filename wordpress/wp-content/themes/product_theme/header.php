@@ -44,4 +44,45 @@
 		
   </head>  
 	
-  
+  <body>
+	
+	<header>
+		<a href="#" class="headerLogo">
+			<img src="<?php bloginfo("stylesheet_directory");?>/i/small_placeholder.png" alt="Image"/>
+		</a>
+		
+		<?php
+			$menus = wp_get_nav_menu_items( "top" ); 
+		?>	
+		<ul class="menuSmall">
+		<?php
+			if($menus != null) :
+				foreach($menus as $index=>$menu) :
+					$class= $menu->object_id == $postId ? "active" : "";
+					$separator = $index > 0 ? " | " : "";
+		?>
+				<li><?php echo $separator;?><a href="<?php echo $menu->url;?>" class=""><?php echo $menu->title;?></a></li>
+		<?php 
+				endforeach;
+			endif;
+		?>
+		</ul>
+		
+		<?php
+			$menus = wp_get_nav_menu_items( "main" ); 
+		?>	
+		<ul class="menuBig">
+		<?php
+			if($menus != null) :
+				foreach($menus as $index=>$menu) :
+					$class= $menu->object_id == $postId ? "active" : "";
+					$separator = $index > 0 ? " | " : "";
+		?>
+				<li><?php echo $separator;?><a href="<?php echo $menu->url;?>" class=""><?php echo $menu->title;?></a></li>
+		<?php 
+				endforeach;
+			endif;
+		?>
+		</ul>
+		
+	</header>

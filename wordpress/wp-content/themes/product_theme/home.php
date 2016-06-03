@@ -13,26 +13,6 @@ if(have_posts()) :
 
 <script>var currUrl = "<?php echo get_site_url(); ?>";</script>
 
-	<header>
-		<a href="#" class="headerLogo">
-			<img src="<?php bloginfo("stylesheet_directory");?>/i/small_placeholder.png" alt="Image"/>
-		</a>
-		
-		<ul class="menuSmall">
-			<li><a href="#" class="">Menu 1</a></li>
-			<li> | <a href="#" class="">Menu 2</a></li>
-			<li> | <a href="#" class="">Menu 2</a></li>
-			<li> | <a href="#" class="">Menu 2</a></li>
-		</ul>
-		
-		<ul class="menuBig">
-			<li><a href="#" class="">Menu 1</a></li>
-			<li> | <a href="#" class="">Menu 2</a></li>
-			<li> | <a href="#" class="">Menu 2</a></li>
-			<li> | <a href="#" class="">Menu 2</a></li>
-		</ul>
-		
-	</header>
 
 	<div class="container">
 
