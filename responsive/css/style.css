@@ -19,6 +19,12 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: digital;
+  src: url('../fonts/digital-7.ttf') format('truetype');
+  font-style: normal;
+}
+
 body {
 	font-family: OpenSans; 
 }
@@ -84,7 +90,10 @@ body {
 
 	.priceWrapper {
 		background-color:#ffffff;
-		padding:10px;
+		padding-bottom:20px;
+	}
+	.priceWrapper .row {
+		margin: 0px;
 	}
 		.priceMainTitle {
 			font-size: 18px;
@@ -92,5 +101,98 @@ body {
 		}
 		.priceMain {
 			background-color:#012971;
-			margin:0px;
 		}
+		.priceMain .label {
+			display: inline-block;
+			color:#ffffff;
+			font-size:24px;
+			font-weight:bold;
+		}
+		.priceMain .labelBox {
+			height:53px;
+			margin:10px 0px;
+			line-height:53px;
+		}
+		.priceBox {
+			height:53px;
+			margin:10px 0px;
+			background-color:#000000;
+			text-align:right;
+			padding:0px 10px;
+		}
+		.priceBox .price {
+			font-family: digital;
+			color:#d60c1c;
+			font-size:36px;
+			font-weight:bold;
+		}
+		.priceBox .sup {
+			font-family: digital;
+			color:#d60c1c;
+			font-size:18px;
+			font-weight:bold;
+			vertical-align: baseline;
+			position: relative;
+			top: -0.7em;
+		}
+		
+	.priceWrapper .stationWrapper {
+		margin-top:20px;
+	}	
+	
+		.stationWrapper .stationPicture  img{
+			border:1px transparent solid;
+			border-radius: 12px 0px 12px 12px;
+		}
+		
+		.stationWrapper .stationTitle {
+			padding:0px;
+			margin:0px;
+			font-weight:600;
+		}
+		
+		.stationWrapper .stationDesc {
+			padding:0px;
+			margin:5px 0px;
+			font-weight:normal;
+			color:#012971;
+		}
+	
+	.priceWrapper .iconWrapper {
+		margin-top:10px;
+	}
+	.iconBox {
+		float:left;
+		width:40px; height: 40px; line-height:40px;
+		text-align:center;
+		color:#ffffff;
+		font-weight:600;
+		margin-right:10px;
+	}
+	
+	.green { background-color:#4aa20d; }
+	.red  { background-color:#ca0705; }
+	.blue  { background-color:#0a9dd3; }
+	
+	.bannerWrapper {
+		text-align:center;
+	}
+	.bannerWrapper img {
+		display:inline-block;
+	}
+	.bannerWrapper a {
+		display:block;
+		color:#588a29;
+		height:55px;
+		width:350px;
+		margin:0px auto;
+		line-height:55px;
+		background-color:#ffffff;
+		text-transform:uppercase;
+		font-size:32px;
+		font-weight:bold;
+	}
+	.bannerWrapper a:hover {
+		text-decoration: none;
+	}
+	
