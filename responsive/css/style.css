@@ -196,3 +196,53 @@ body {
 		text-decoration: none;
 	}
 	
+.bannerMobile {
+	min-height:200px;
+	background:url(../i/main-bg.jpg) no-repeat center center fixed; 
+	padding:20px;
+}	
+	.bannerMobile .row {
+		margin:0px;
+	}
+	.mobileBannerWrapper {
+		padding:10px;
+		text-align:center;
+	}
+	.mobileBannerWrapper img{
+		display:inline-block;
+	}
+	.bannerMobile a {
+		display:block;
+		color:#588a29;
+		height:55px;
+		width:250px;
+		margin:0px auto;
+		margin-top:40px;
+		line-height:55px;
+		background-color:#ffffff;
+		text-transform:uppercase;
+		font-size:24px;
+		font-weight:bold;
+		text-align:center;
+	}
+	.bannerMobile a:hover {
+		text-decoration: none;
+	}
+	.descBox {
+		padding-top:30px;
+	}
+	.descBox p {
+		font-size:24px;
+		font-weight:bold;
+		text-align:center;
+		color:#ffffff;
+		margin-bottom:0px;
+	}
+
+#selectStationMobile {
+	float:none;
+	width:auto;
+	margin-left:70px;
+	margin-right:70px;
+	margin-top:-60px;
+}	

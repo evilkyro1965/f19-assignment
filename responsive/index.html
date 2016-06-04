@@ -18,6 +18,7 @@
 		<link href="css/font-awesome.min.css" rel="stylesheet">
 		
 		<link href="css/style.css" rel="stylesheet">
+		<link href="css/mobile.css" rel="stylesheet">
 		
 		<script src="js/jquery-1.12.4.min.js"></script>
 		
@@ -50,7 +51,7 @@
             <li><a href="#contact">Contact</a></li>
           </ul>
 					
-					<div class="selectStation">
+					<div class="selectStation visible-lg">
 						<div class="selectIconWrapper">
 							<img src="i/gas-station.png" alt="" />
 						</div>
@@ -63,9 +64,33 @@
         </div><!--/.nav-collapse -->
       </div>
     </nav>
+		
+		<div class="bannerMobile visible-xs visible-sm">
+			<div class="row">
+				<div class="col-xs-5 mobileBannerWrapper">
+					<img src="i/gas-pump.png" class="img-responsive" alt="" />
+				</div>
+				<div class="col-xs-7 descBox">
+					<p>MAAK ELKE WEEK</p>
+					<p>KANS OP</p>
+					<p>1.000,- EURO</p>
+					<a href="javascript:;">Bekijk De Active</a>
+				</div>
+			</div>
+		</div>
 
     <div class="mainContent">
-
+			
+			<div id="selectStationMobile" class="selectStation visible-xs visible-sm">
+				<div class="selectIconWrapper">
+					<img src="i/gas-station.png" alt="" />
+				</div>
+				<div class="selectStationBox">
+					<h5>Mijn station</h5>
+					<p>Selecteren</p>
+				</div>
+			</div>
+			
 			<div class="row">
 				<div class="col-md-4 priceWrapper">
 					<h5 class="priceMainTitle">Lorem ipsum dolor sit amet</h5>
@@ -137,9 +162,9 @@
 					
 				</div>
 				
-				<div class="col-md-8 bannerWrapper">
+				<div class="col-md-8 bannerWrapper visible-md visible-lg">
 					<img src="i/gas-pump.png" class="img-responsive" alt="" />
-					<a href="javascript:;">Bekijk De Active</a>
+					<a href="javascript:;">Bekijk De Actie</a>
 				</div>
 				
 			</div>
